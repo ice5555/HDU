@@ -1,8 +1,8 @@
-cmd_/home/lhb/HDU/OS/assignment1/assignment1.o := gcc -Wp,-MD,/home/lhb/HDU/OS/assignment1/.assignment1.o.d  -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/7/include  -I./arch/x86/include -I./arch/x86/include/generated  -I./include -I./arch/x86/include/uapi -I./arch/x86/include/generated/uapi -I./include/uapi -I./include/generated/uapi -include ./include/linux/kconfig.h -Iubuntu/include  -D__KERNEL__ -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -fshort-wchar -Werror-implicit-function-declaration -Werror=return-type -Wno-format-security -std=gnu89 -fno-PIE -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -mno-avx -m64 -falign-jumps=1 -falign-loops=1 -mno-80387 -mno-fp-ret-in-387 -mpreferred-stack-boundary=3 -mskip-rax-setup -mtune=generic -mno-red-zone -mcmodel=kernel -funit-at-a-time -DCONFIG_X86_X32_ABI -DCONFIG_AS_CFI=1 -DCONFIG_AS_CFI_SIGNAL_FRAME=1 -DCONFIG_AS_CFI_SECTIONS=1 -DCONFIG_AS_FXSAVEQ=1 -DCONFIG_AS_SSSE3=1 -DCONFIG_AS_CRC32=1 -DCONFIG_AS_AVX=1 -DCONFIG_AS_AVX2=1 -DCONFIG_AS_AVX512=1 -DCONFIG_AS_SHA1_NI=1 -DCONFIG_AS_SHA256_NI=1 -pipe -Wno-sign-compare -fno-asynchronous-unwind-tables -mindirect-branch=thunk-extern -mindirect-branch-register -fno-jump-tables -fno-delete-null-pointer-checks -Wno-frame-address -Wno-format-truncation -Wno-format-overflow -Wno-int-in-bool-context -O2 --param=allow-store-data-races=0 -DCC_HAVE_ASM_GOTO -Wframe-larger-than=1024 -fstack-protector-strong -Wno-unused-but-set-variable -Wno-unused-const-variable -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-var-tracking-assignments -pg -mrecord-mcount -mfentry -DCC_USING_FENTRY -Wdeclaration-after-statement -Wno-pointer-sign -Wno-array-bounds -Wno-stringop-overflow -Wno-restrict -Wno-maybe-uninitialized -fno-strict-overflow -fno-merge-all-constants -fmerge-constants -fno-stack-check -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -Werror=date-time -Werror=incompatible-pointer-types -Werror=designated-init  -DMODULE  -DKBUILD_BASENAME='"assignment1"'  -DKBUILD_MODNAME='"assignment1"' -c -o /home/lhb/HDU/OS/assignment1/.tmp_assignment1.o /home/lhb/HDU/OS/assignment1/assignment1.c
+cmd_/home/HDU/OS/assignment1/assignment1.o := gcc -Wp,-MD,/home/HDU/OS/assignment1/.assignment1.o.d  -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/7/include  -I./arch/x86/include -I./arch/x86/include/generated  -I./include -I./arch/x86/include/uapi -I./arch/x86/include/generated/uapi -I./include/uapi -I./include/generated/uapi -include ./include/linux/kconfig.h -Iubuntu/include  -D__KERNEL__ -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -fshort-wchar -Werror-implicit-function-declaration -Werror=return-type -Wno-format-security -std=gnu89 -fno-PIE -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -mno-avx -m64 -falign-jumps=1 -falign-loops=1 -mno-80387 -mno-fp-ret-in-387 -mpreferred-stack-boundary=3 -mskip-rax-setup -mtune=generic -mno-red-zone -mcmodel=kernel -funit-at-a-time -DCONFIG_X86_X32_ABI -DCONFIG_AS_CFI=1 -DCONFIG_AS_CFI_SIGNAL_FRAME=1 -DCONFIG_AS_CFI_SECTIONS=1 -DCONFIG_AS_FXSAVEQ=1 -DCONFIG_AS_SSSE3=1 -DCONFIG_AS_CRC32=1 -DCONFIG_AS_AVX=1 -DCONFIG_AS_AVX2=1 -DCONFIG_AS_AVX512=1 -DCONFIG_AS_SHA1_NI=1 -DCONFIG_AS_SHA256_NI=1 -pipe -Wno-sign-compare -fno-asynchronous-unwind-tables -mindirect-branch=thunk-extern -mindirect-branch-register -fno-jump-tables -fno-delete-null-pointer-checks -Wno-frame-address -Wno-format-truncation -Wno-format-overflow -Wno-int-in-bool-context -O2 --param=allow-store-data-races=0 -DCC_HAVE_ASM_GOTO -Wframe-larger-than=1024 -fstack-protector-strong -Wno-unused-but-set-variable -Wno-unused-const-variable -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-var-tracking-assignments -pg -mrecord-mcount -mfentry -DCC_USING_FENTRY -Wdeclaration-after-statement -Wno-pointer-sign -Wno-array-bounds -Wno-stringop-overflow -Wno-restrict -Wno-maybe-uninitialized -fno-strict-overflow -fno-merge-all-constants -fmerge-constants -fno-stack-check -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -Werror=date-time -Werror=incompatible-pointer-types -Werror=designated-init  -DMODULE  -DKBUILD_BASENAME='"assignment1"'  -DKBUILD_MODNAME='"assignment1"' -c -o /home/HDU/OS/assignment1/.tmp_assignment1.o /home/HDU/OS/assignment1/assignment1.c
 
-source_/home/lhb/HDU/OS/assignment1/assignment1.o := /home/lhb/HDU/OS/assignment1/assignment1.c
+source_/home/HDU/OS/assignment1/assignment1.o := /home/HDU/OS/assignment1/assignment1.c
 
-deps_/home/lhb/HDU/OS/assignment1/assignment1.o := \
+deps_/home/HDU/OS/assignment1/assignment1.o := \
   include/linux/compiler_types.h \
     $(wildcard include/config/have/arch/compiler/h.h) \
     $(wildcard include/config/enable/must/check.h) \
@@ -41,11 +41,11 @@ deps_/home/lhb/HDU/OS/assignment1/assignment1.o := \
     $(wildcard include/config/phys/addr/t/64bit.h) \
     $(wildcard include/config/64bit.h) \
   include/uapi/linux/types.h \
-  include/asm/types.h \
+  arch/x86/include/uapi/asm/types.h \
   include/uapi/asm-generic/types.h \
   include/asm-generic/int-ll64.h \
   include/uapi/asm-generic/int-ll64.h \
-  include/asm/bitsperlong.h \
+  arch/x86/include/uapi/asm/bitsperlong.h \
   include/asm-generic/bitsperlong.h \
   include/uapi/asm-generic/bitsperlong.h \
   include/uapi/linux/posix_types.h \
@@ -53,7 +53,7 @@ deps_/home/lhb/HDU/OS/assignment1/assignment1.o := \
   include/uapi/linux/stddef.h \
   arch/x86/include/asm/posix_types.h \
     $(wildcard include/config/x86/32.h) \
-  include/asm/posix_types_64.h \
+  arch/x86/include/uapi/asm/posix_types_64.h \
   include/uapi/asm-generic/posix_types.h \
   include/linux/poison.h \
     $(wildcard include/config/illegal/pointer/value.h) \
@@ -118,13 +118,13 @@ deps_/home/lhb/HDU/OS/assignment1/assignment1.o := \
     $(wildcard include/config/page/table/isolation.h) \
   include/asm-generic/bitops/const_hweight.h \
   include/asm-generic/bitops/le.h \
-  include/asm/byteorder.h \
+  arch/x86/include/uapi/asm/byteorder.h \
   include/linux/byteorder/little_endian.h \
     $(wildcard include/config/cpu/big/endian.h) \
   include/uapi/linux/byteorder/little_endian.h \
   include/linux/swab.h \
   include/uapi/linux/swab.h \
-  include/asm/swab.h \
+  arch/x86/include/uapi/asm/swab.h \
   include/linux/byteorder/generic.h \
   include/asm-generic/bitops/ext2-atomic-setbit.h \
   include/linux/log2.h \
@@ -156,7 +156,7 @@ deps_/home/lhb/HDU/OS/assignment1/assignment1.o := \
   arch/x86/include/asm/jump_label.h \
   include/linux/build_bug.h \
   include/linux/stat.h \
-  include/asm/stat.h \
+  arch/x86/include/uapi/asm/stat.h \
   include/uapi/linux/stat.h \
   include/linux/time.h \
     $(wildcard include/config/arch/uses/gettimeoffset.h) \
@@ -196,7 +196,7 @@ deps_/home/lhb/HDU/OS/assignment1/assignment1.o := \
     $(wildcard include/config/compat.h) \
   include/linux/errno.h \
   include/uapi/linux/errno.h \
-  include/asm/errno.h \
+  arch/x86/include/uapi/asm/errno.h \
   include/uapi/asm-generic/errno.h \
   include/uapi/asm-generic/errno-base.h \
   arch/x86/include/asm/current.h \
@@ -211,13 +211,13 @@ deps_/home/lhb/HDU/OS/assignment1/assignment1.o := \
   include/linux/mem_encrypt.h \
     $(wildcard include/config/arch/has/mem/encrypt.h) \
   arch/x86/include/asm/mem_encrypt.h \
-  include/asm/bootparam.h \
+  arch/x86/include/uapi/asm/bootparam.h \
   include/linux/screen_info.h \
   include/uapi/linux/screen_info.h \
   include/linux/apm_bios.h \
   include/uapi/linux/apm_bios.h \
   include/uapi/linux/ioctl.h \
-  include/asm/ioctl.h \
+  arch/x86/include/uapi/asm/ioctl.h \
   include/asm-generic/ioctl.h \
   include/uapi/asm-generic/ioctl.h \
   include/linux/edd.h \
@@ -259,7 +259,7 @@ deps_/home/lhb/HDU/OS/assignment1/assignment1.o := \
     $(wildcard include/config/xen/pv.h) \
     $(wildcard include/config/x86/32/lazy/gs.h) \
   arch/x86/include/uapi/asm/ptrace.h \
-  include/asm/ptrace-abi.h \
+  arch/x86/include/uapi/asm/ptrace-abi.h \
   arch/x86/include/asm/paravirt_types.h \
     $(wildcard include/config/pgtable/levels.h) \
     $(wildcard include/config/paravirt/debug.h) \
@@ -473,7 +473,7 @@ deps_/home/lhb/HDU/OS/assignment1/assignment1.o := \
   include/linux/timex.h \
   include/uapi/linux/timex.h \
   include/uapi/linux/param.h \
-  include/asm/param.h \
+  arch/x86/include/uapi/asm/param.h \
   include/asm-generic/param.h \
     $(wildcard include/config/hz.h) \
   include/uapi/asm-generic/param.h \
@@ -584,7 +584,7 @@ deps_/home/lhb/HDU/OS/assignment1/assignment1.o := \
     $(wildcard include/config/x86/x32/abi.h) \
   arch/x86/include/asm/user.h \
   arch/x86/include/asm/user_64.h \
-  include/asm/auxvec.h \
+  arch/x86/include/uapi/asm/auxvec.h \
   arch/x86/include/asm/vdso.h \
     $(wildcard include/config/x86/x32.h) \
   include/linux/mm_types.h \
@@ -656,11 +656,10 @@ deps_/home/lhb/HDU/OS/assignment1/assignment1.o := \
     $(wildcard include/config/modules/use/elf/rel.h) \
     $(wildcard include/config/modules/use/elf/rela.h) \
   arch/x86/include/asm/orc_types.h \
-  include/unistd.h \
   include/linux/reboot.h \
   include/uapi/linux/reboot.h \
   arch/x86/include/asm/emergency-restart.h \
 
-/home/lhb/HDU/OS/assignment1/assignment1.o: $(deps_/home/lhb/HDU/OS/assignment1/assignment1.o)
+/home/HDU/OS/assignment1/assignment1.o: $(deps_/home/HDU/OS/assignment1/assignment1.o)
 
-$(deps_/home/lhb/HDU/OS/assignment1/assignment1.o):
+$(deps_/home/HDU/OS/assignment1/assignment1.o):
