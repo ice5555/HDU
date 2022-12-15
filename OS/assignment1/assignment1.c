@@ -13,10 +13,11 @@ static void time_func(struct timer_list * data)
 {
 	
     printk("jiffies=%lu\n",jiffies);
+    //printk(KERN_INFO"%s:IN init\n",__func__);
     del_timer(&timer);
     //sync();
-    kernel_restart(NULL);
-   
+    //kernel_restart("restarting kernel");
+    emergency_restart();
     
 }
 
@@ -34,7 +35,7 @@ static int __init mytimer_init(void)
 static void __exit mytimer_exit(void)
 {
 	printk("exit!\n");
-	
+	printk(KERN_INFO"%s:IN init\n",__func__);
 }
  
 module_init(mytimer_init);

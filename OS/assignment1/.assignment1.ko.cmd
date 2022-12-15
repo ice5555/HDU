@@ -1,1 +1,0 @@
-cmd_/home/HDU/OS/assignment1/assignment1.ko := ld -r -m elf_x86_64 -z max-page-size=0x200000 -T ./scripts/module-common.lds --build-id  -o /home/HDU/OS/assignment1/assignment1.ko /home/HDU/OS/assignment1/assignment1.o /home/HDU/OS/assignment1/assignment1.mod.o ;  true
