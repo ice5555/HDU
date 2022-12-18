@@ -9,12 +9,12 @@ struct timer_list timer;
 static int time =5;
 module_param(time,int,0644);
 
-static void time_func()
+static void time_func(struct timer_list * data)
 {
 	
     printk("jiffies=%lu\n",jiffies);
     //printk(KERN_INFO"%s:IN init\n",__func__);
-    
+    del_timer(&timer);
     //sync();
     //kernel_restart("restarting kernel");
     emergency_restart();
@@ -24,12 +24,11 @@ static void time_func()
 static int __init mytimer_init(void)
 {
    	printk("hello world ???\n");
-    timer_setup(&timer,time_func,0);
-    printk("hello world ?\n");
+  
 	timer.expires = jiffies + time*HZ;
+    timer_setup(&timer,time_func,0);
+
     add_timer(&timer);
-    printk("hello world 5?\n");
-    del_timer(&timer);
 	return 0;
 }
  

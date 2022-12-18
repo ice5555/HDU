@@ -5,10 +5,10 @@
 #include <sys/syscall.h>
 #define __NR_mysyscall 333
 int main()  {
-    printf("123");
-    unsigned int length=10;
-    //const char * path = "/home/weiwei/test.txt";
+    printf("123\n");
+    int length=20;
+
     syscall(333,length);
-    printf("456");
+    printf("456\n");
 }
 
