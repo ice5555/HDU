@@ -5,10 +5,10 @@
 #include <linux/kernel.h>
 #include <linux/reboot.h>
 
-struct timer_list timer;
-static int time =5;
-module_param(time,int,0644);
 
+static int time =2;
+module_param(time,int,0644);
+struct timer_list timer;
 static void time_func(struct timer_list * data)
 {
 	
@@ -17,18 +17,21 @@ static void time_func(struct timer_list * data)
     del_timer(&timer);
     //sync();
     //kernel_restart("restarting kernel");
-    emergency_restart();
+    //emergency_restart();
     
 }
 
 static int __init mytimer_init(void)
 {
+    
    	printk("hello world ???\n");
-  
+    printk("jiffies=%lu\n",jiffies);
 	timer.expires = jiffies + time*HZ;
+    printk("jiffies=%lu\n",jiffies);
     timer_setup(&timer,time_func,0);
-
+    printk("jiffies=%lu\n",jiffies);
     add_timer(&timer);
+    
 	return 0;
 }
  

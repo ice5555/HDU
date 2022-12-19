@@ -6,7 +6,7 @@
 #define __NR_mysyscall 333
 int main()  {
     printf("123\n");
-    int length=20;
+    int length=15;
 
     syscall(333,length);
     printf("456\n");

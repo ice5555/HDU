@@ -22,6 +22,14 @@ MODULE_INFO(retpoline, "Y");
 static const struct modversion_info ____versions[]
 __used
 __attribute__((section("__versions"))) = {
+	{ 0x3996f171, __VMLINUX_SYMBOL_STR(module_layout) },
+	{ 0xecaaca53, __VMLINUX_SYMBOL_STR(param_ops_int) },
+	{ 0xd44e7d7d, __VMLINUX_SYMBOL_STR(add_timer) },
+	{ 0xe4f742fb, __VMLINUX_SYMBOL_STR(init_timer_key) },
+	{ 0xc76c458b, __VMLINUX_SYMBOL_STR(del_timer) },
+	{ 0x27e1a049, __VMLINUX_SYMBOL_STR(printk) },
+	{ 0x15ba50a6, __VMLINUX_SYMBOL_STR(jiffies) },
+	{ 0xbdfb6dbb, __VMLINUX_SYMBOL_STR(__fentry__) },
 };
 
 static const char __module_depends[]
@@ -30,4 +38,4 @@ __attribute__((section(".modinfo"))) =
 "depends=";
 
 
-MODULE_INFO(srcversion, "4D0F7F6A9D294D4A8D11763");
+MODULE_INFO(srcversion, "D0043CBC94BB2B2D7D36983");
