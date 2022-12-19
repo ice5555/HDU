@@ -12,7 +12,7 @@ struct timer_list timer;
 static void time_func(struct timer_list * data)
 {
 	
-    printk("jiffies=%lu\n",jiffies);
+    printk("jiffies546=%lu\n",jiffies);
     //printk(KERN_INFO"%s:IN init\n",__func__);
     del_timer(&timer);
     //sync();

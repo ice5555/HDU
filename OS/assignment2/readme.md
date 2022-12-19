@@ -1,0 +1,1 @@
+journalctl -k -b -1 2>&1|tee sys.log
