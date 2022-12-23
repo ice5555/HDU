@@ -55,12 +55,12 @@ def rmse(image0, image):
     return rmse
 
 
-image = cv2.imread(r'image/2.jpeg')
+image = cv2.imread(r'image/1.jpg')
 
 
-img_sp = sp_noise(image, 0.05)#椒盐
-img_gaussian = gaussian_noise(image, 0.1, 0.03)
-rmse(image, image)
+img_sp = sp_noise(image, 0.3)#椒盐
+img_gaussian = gaussian_noise(image, 0.1, 0.05)
+#rmse(image, image)
 cv2.imshow('image', image)
 Gaussian_pyramid(image,5)
 cv2.waitKey(0)
@@ -68,21 +68,21 @@ cv2.waitKey(0)
 cv2.imshow('img_sp', img_sp)
 cv2.imshow('img_gaussian', img_gaussian)
 cv2.waitKey(0)
-rmse(image,img_sp)
-rmse(image,img_gaussian)
 
+rmse(image,img_gaussian)
+rmse(image,img_sp)
 
 img_gaussian_gaussianblur=cv2.GaussianBlur(img_gaussian, (5, 5), 1)#高斯平滑
-img_gaussian_medianblur = cv2.medianBlur(img_gaussian,5)#中值滤波
+img_gaussian_medianblur = cv2.medianBlur(img_gaussian,3)#中值滤波
 rmse(image,img_gaussian_gaussianblur)
 rmse(image,img_gaussian_medianblur)
 
 
 
 img_sp_gaussianblur = cv2.GaussianBlur(img_sp,(5, 5), 1)
-img_sp_medianblur=cv2.medianBlur(img_sp,5)
-rmse(image,img_sp_gaussianblur)
-rmse(image,img_sp_medianblur)
+img_sp_medianblur=cv2.medianBlur(img_sp,3)
+rmse(img_sp,img_sp_gaussianblur)
+rmse(img_sp,img_sp_medianblur)
 
 cv2.imshow('img_gaussian', img_gaussian)
 cv2.imshow('img_gaussian_gaussianblur', img_gaussian_gaussianblur)

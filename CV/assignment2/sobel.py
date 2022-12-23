@@ -9,7 +9,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-img = cv2.imread(r'./image_filtering/image/1.jpg')
+img = cv2.imread(r'./image/1.jpg')
+cv2.imshow('img',img)
 img = cv2.cvtColor(img,cv2.COLOR_RGB2GRAY)  
 dx = cv2.Sobel(img, cv2.CV_64F, dx=1, dy=0, ksize=3)
 sobelx=cv2.convertScaleAbs(dx)
@@ -17,11 +18,11 @@ dy = cv2.Sobel(img, cv2.CV_64F, dx=0, dy=1, ksize=3)
 sobely=cv2.convertScaleAbs(dy)
 result=cv2.addWeighted(sobelx,0.5,sobely,0.5,0)
 
-#cv2.imshow('img1', img)
+cv2.imshow('img_grey', img)
 #cv2.imshow('imgx', sobelx)
 #cv2.imshow('imgy', sobely)
-#cv2.imshow('img', result)
-#cv2.waitKey(0)
+cv2.imshow('img_sobel', result)
+cv2.waitKey(0)
 
 sns.set()
 plt.subplot(2,2,1)
