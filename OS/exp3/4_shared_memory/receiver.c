@@ -39,7 +39,7 @@ int main(){
             char send[100]="over";
             memset((char *)shmp, '\0', 1024);
             strcpy((char *)shmp, send);
-            flag=1;
+            flag=1; 
         }
 
         sem_post(sem_mutex);

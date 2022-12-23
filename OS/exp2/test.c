@@ -5,10 +5,10 @@
 #include <sys/syscall.h>
 #define __NR_mysyscall 333
 int main()  {
-    printf("123\n");
+    printf("hello world\n");
     int length=15;
 
     syscall(333,length);
-    printf("456\n");
+    //printf("456\n");
 }
 
