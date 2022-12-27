@@ -49,6 +49,7 @@ typedef struct FAT {
     unsigned short id;   //free代表未分配，否则代表某文件下一磁盘块的块号
 } fat;
 // 用户打开文件表
+
 typedef struct USEROPEN {
     char filename[8];           // 文件名
     char exname[3];             // 文件扩展名
@@ -66,6 +67,7 @@ typedef struct USEROPEN {
     char fcbstate;              // 是否修改了文件的FCB的内容，如果修改了置为1，否则为0
     char topenfile;             // 表示该用户打开表项是否为空，若值为0，表示为空，否则表示已被某打开文件占据
 } useropen;
+
 // 引导块 BootBlock，存放虚拟磁盘的相关描述信息
 typedef struct BootBlock {
     char magic_number[8];       // 文件系统的魔数
@@ -367,15 +369,17 @@ void my_mkdir(char *dirname){
     // 例 在\a\这个目录下创建了b这个目录, 那么a这个目录文件的大小要+=sizeof(fcb)
 
     //判断dirname是否合法
-    char* fname = strtok(dirname,".");
-    char* exname = strtok(NULL,".");
+    char* fname = strtok(dirname,".");//分割文件名
+    char* exname = strtok(NULL,".");//分割文件后缀名
     if(exname){
         cout << "不允许输入后缀名!" << endl;
         return ;
     }
     char text[MAX_TEXT_SIZE];
     openfilelist[currfd].filePtr = 0;
-    int fileLen = do_read(currfd, openfilelist[currfd].length, text);
+    int fileLen = do_read(currfd, openfilelist[currfd].length, text);//返回实际读出的字节数。读取currfd对应的目录文件到buf
+    //do_read 函数用于从指定的文件描述符 currfd 所对应的文件中读取数据。其中 openfilelist[currfd].length 表示要读取的数据长度，text 是一个缓冲区，用于存储读取的数据。函数会返回实际读取的数据长度，并存储在 fileLen 变量中。
+    
     //text里的内容就是一个个fcb
     fcb *fcbPtr = (fcb*)text;
     for(int i=0; i < (int)(fileLen/sizeof(fcb)); i++){
@@ -384,6 +388,7 @@ void my_mkdir(char *dirname){
             return;
         }
     }
+
     //在打开文件表里找一个空文件表项
     int fd = get_Free_Openfile();
     if(fd == -1){
@@ -397,14 +402,16 @@ void my_mkdir(char *dirname){
         openfilelist[fd].topenfile = 0;
         return ;
     }
+
     fat *fat1 = (fat *)(v_addr0 + BLOCKSIZE);
     fat *fat2 = (fat *)(v_addr0 + BLOCKSIZE*3);
     fat1[blockNum].id = END;
     fat2[blockNum].id = END;
+
     //在当前目录里面添加一个我们要的目录项
     int i = 0;
     for(; i < (int)(fileLen/sizeof(fcb)); i++){
-        if(fcbPtr[i].free == 0){
+        if(fcbPtr[i].free == 0){//第i个可以用
             break;
         }
     }
@@ -414,16 +421,16 @@ void my_mkdir(char *dirname){
     //修改新建的目录项,即fcb内容
     //因为现在是在模拟文件系统,我们要先写到临时的fcb里,然后用do_write转写到磁盘里
     fcb* fcbtmp = new fcb;
-    fcbtmp->metadata = 0;
+    fcbtmp->metadata = 0;//目录文件
     time_t rawtime = time(NULL);
     struct tm* time = localtime(&rawtime);
-    fcbtmp->date = (time->tm_year-100)*512 + (time->tm_mon+1)*32 + (time->tm_mday);
-    fcbtmp->time = (time->tm_hour)*2048 + (time->tm_min)*32 + (time->tm_sec) / 2;
+    fcbtmp->date = (time->tm_year-100)*512 + (time->tm_mon+1)*32 + (time->tm_mday);//日期
+    fcbtmp->time = (time->tm_hour)*2048 + (time->tm_min)*32 + (time->tm_sec) / 2;//时间
     strcpy(fcbtmp->filename , dirname);
-    strcpy(fcbtmp->exname, "di");
-    fcbtmp->first = blockNum;
-    fcbtmp->length = 2 * sizeof(fcb);
-    fcbtmp->free = 1;
+    strcpy(fcbtmp->exname, "di");//目录文件后缀名
+    fcbtmp->first = blockNum;//起始盘块号
+    fcbtmp->length = 2 * sizeof(fcb);//长度
+    fcbtmp->free = 1;//已分配
     //用do_write把fcbtmp写入到目录文件里
     do_write(currfd,(char *)fcbtmp,sizeof(fcb),1);
 
@@ -432,8 +439,8 @@ void my_mkdir(char *dirname){
     openfilelist[fd].filePtr = 0;
     openfilelist[fd].date = fcbtmp->date;
     openfilelist[fd].time = fcbtmp->time;
-    openfilelist[fd].dirno = openfilelist[currfd].first;
-    openfilelist[fd].diroff = i;
+    openfilelist[fd].dirno = openfilelist[currfd].first;//相应打开文件的目录项在父目录文件中的盘块号
+    openfilelist[fd].diroff = i;                        //相应打开文件的目录项在父目录文件的dirno盘块中的目录项序号
     strcpy(openfilelist[fd].exname,"di");
     strcpy(openfilelist[fd].filename,dirname);
     openfilelist[fd].fcbstate = 0;
@@ -449,7 +456,7 @@ void my_mkdir(char *dirname){
     fcbtmp->metadata = 0;
     fcbtmp->date = fcbtmp->date;
     fcbtmp->time = fcbtmp->time;
-    strcpy(fcbtmp->filename, ".");
+    strcpy(fcbtmp->filename, ".");//.目录
     strcpy(fcbtmp->exname, "di");
     fcbtmp->first = blockNum;
     fcbtmp->length = 2 * sizeof(fcb);
@@ -464,7 +471,7 @@ void my_mkdir(char *dirname){
     fcbtmp2->time = openfilelist[currfd].time;
     do_write(fd,(char*)fcbtmp2,sizeof(fcb),1);
 
-    my_close(fd);
+    my_close(fd);//检查fd的有效性（fd不能超出用户打开文件表所在数组的最大下标），如果无效则返回-1；
     //更新本currfd目录文件的fcb
     fcbPtr = (fcb *)text;
     fcbPtr->length =  openfilelist[currfd].length;
@@ -521,7 +528,7 @@ void my_rmdir(char *dirname){
     int next = 0;
     while(1){
         next = fat1[blockNum].id;
-        fat1[blockNum].id = END;
+        fat1[blockNum].id = END;//回收
         if(next != END){
             blockNum = next;
         }
@@ -544,7 +551,9 @@ void my_rmdir(char *dirname){
     //写到磁盘上去, 更新fcb内容为空
     openfilelist[currfd].filePtr = i * sizeof(fcb);
     do_write(currfd,(char*)fcbPtr,sizeof(fcb),1);
-    openfilelist[currfd].length -= sizeof(fcb);
+    openfilelist[currfd].length -= sizeof(fcb);//减去目录项长度
+                                                //例 你在\a\目录下,删除b这个目录,那么删除完之后,a这个目录文件的大小(length)要-=sizeof(fcb)
+                                                //   并且,b这个目录文件是有一个fcb在a这个目录文件里的,把这个fcb也删掉
     //更新.目录项的长度
     fcbPtr = (fcb*)buf;
     fcbPtr->length = openfilelist[currfd].length;
@@ -572,18 +581,23 @@ void my_ls(){
         if(fcbPtr->free == 1){
             //目录文件
             //同理,年份占7位,月份占4位,日期占5位
-            //小时占5位,分钟占6位,秒占5位	
+            //小时占5位,分钟占6位,秒占5位
+            //fcb中的时间是通过两个16位的字段来存储的，一个是date字段，一个是time字段。date字段用来存储日期信息，time字段用来存储时间信息。
+
+            //比如，如果日期值为 0x0012 (十六进制，对应二进制 00010010)，那么右移5位之后为0x0060 (十六进制，对应二进制 01100000)，然后和0x000f与运算之后得到的结果为0x0000 (十六进制，对应二进制 00000000)，对应的十进制值是0。
+
+            //00000010000010010100010 
             if(fcbPtr->metadata == 0){
                 printf("%s\t%dB\t<DIR>\t%d/%d/%d\t%02d:%02d:%02d\n",
                        fcbPtr->filename,fcbPtr->length,
                        (fcbPtr->date>>9)+2000,
-                       (fcbPtr->date>>5)&0x000f,
+                       (fcbPtr->date>>5)&0x000f,//5位
                        (fcbPtr->date)&0x001f,
                        (fcbPtr->time>>11),
-                       (fcbPtr->time>>5)&0x003f,
-                       (fcbPtr->time)&0x001f * 2);
-            }
-            else{
+                       (fcbPtr->time>>5)&0x003f,//111111 
+                       (fcbPtr->time)&0x001f * 2);//最后五位表示的是分钟的单位为30秒。如果要将这个时间戳转化为真实的分钟数，就需要将这个值乘以2。            
+                       }
+            else {
                 // 普通文件length - 2 是因为末尾有/n和/0两个字符
                 unsigned int length = fcbPtr->length;
                 if(length != 0)length -= 2;

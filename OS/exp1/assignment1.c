@@ -24,7 +24,7 @@ static void time_func(struct timer_list * data)
 static int __init mytimer_init(void)
 {
     
-   	printk("hello world ???\n");
+   	printk("kaishi ???\n");
     //printk("jiffies=%lu\n",jiffies);
 	timer.expires = jiffies + time*HZ;
     //printk("jiffies=%lu\n",jiffies);
