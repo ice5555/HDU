@@ -12,7 +12,7 @@ struct timer_list timer;
 static void time_func(struct timer_list * data)
 {
 	
-    printk("jiffies546=%lu\n",jiffies);
+    //printk("jiffies546=%lu\n",jiffies);
     //printk(KERN_INFO"%s:IN init\n",__func__);
     del_timer(&timer);
     //sync();
@@ -24,7 +24,7 @@ static void time_func(struct timer_list * data)
 static int __init mytimer_init(void)
 {
     
-   	printk("kaishi ???\n");
+   	printk("即将在%d秒后重启\n",time);
     //printk("jiffies=%lu\n",jiffies);
 	timer.expires = jiffies + time*HZ;
     //printk("jiffies=%lu\n",jiffies);
