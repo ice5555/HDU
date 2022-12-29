@@ -5,10 +5,9 @@
 #include <sys/syscall.h>
 #define __NR_mysyscall 333
 int main()  {
-    printf("hello world\n");
-    int length=15;
-
-    syscall(333,length);
-    //printf("456\n");
+    
+    int time=15;
+    printf("即将在 %d 秒后重启\n",time);
+    syscall(333,time);
+ 
 }
-

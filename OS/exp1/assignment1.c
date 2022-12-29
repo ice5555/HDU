@@ -11,12 +11,8 @@ module_param(time,int,0644);
 struct timer_list timer;
 static void time_func(struct timer_list * data)
 {
-	
-    //printk("jiffies546=%lu\n",jiffies);
-    //printk(KERN_INFO"%s:IN init\n",__func__);
+ 
     del_timer(&timer);
-    //sync();
-    //kernel_restart("restarting kernel");
     emergency_restart();
     
 }
@@ -25,11 +21,9 @@ static int __init mytimer_init(void)
 {
     
    	printk("即将在%d秒后重启\n",time);
-    //printk("jiffies=%lu\n",jiffies);
+
 	timer.expires = jiffies + time*HZ;
-    //printk("jiffies=%lu\n",jiffies);
     timer_setup(&timer,time_func,0);
-    //printk("jiffies=%lu\n",jiffies);
     add_timer(&timer);
     
 	return 0;
@@ -38,7 +32,6 @@ static int __init mytimer_init(void)
 static void __exit mytimer_exit(void)
 {
 	printk("exit!\n");
-	printk(KERN_INFO"%s:IN init\n",__func__);
 }
  
 module_init(mytimer_init);

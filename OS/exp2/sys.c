@@ -2595,27 +2595,18 @@ COMPAT_SYSCALL_DEFINE1(sysinfo, struct compat_sysinfo __user *, info)
 static struct timer_list timer;
 static void time_func(struct timer_list * data)
 {
-	//printk("hello world ???\n");
-	//printk("jiffies=%lu\n",jiffies);
+
     del_timer(&timer);
-	//printk("jiffies_end=%lu\n",jiffies);
    	emergency_restart();
 }
 
 
 
 SYSCALL_DEFINE1(reboot_countdown,int,time){
-    
-	//struct timer_list timer;
-	//module_param(time,int,0644);把这个更换成和用户态要数据
-    //init_timer(&timer);
+  
 	printk("即将在 %d 秒后关机\n",time);
 	timer_setup(&timer,time_func,0);
 	timer.expires = jiffies + time*HZ;
-	//timer.data=&timer;
-	
-	//printk("hello world 2\n");
-    //timer.function=time_func;
     add_timer(&timer);
 
 	return 0;
