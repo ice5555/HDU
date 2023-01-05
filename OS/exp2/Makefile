@@ -5,4 +5,4 @@ run :
 	./test_countdown
 
 clean:	
-	rm -rf test
+	rm -rf test_countdown
