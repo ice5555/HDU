@@ -1,0 +1,40 @@
+使用说明：
+
+1. 下载代码包并解压缩。
+
+2. 连接并导入数据库文件
+
+3. 运行命令 `python app.py`。
+
+4. 在浏览器中访问 `http://localhost:5000`。
+
+5. 可查看道路信息，并进行放大缩小
+
+   ![image-20230508055736913](../../../ubuntu_share/Markdowm/Pic/image-20230508055736913.png)
+
+6. 可选择日期
+
+   <img src="../../../ubuntu_share/Markdowm/Pic/image-20230508055913415.png" alt="image-20230508055913415" style="zoom:67%;" />
+
+   * 生成对应的道路数据，可任意点击查看
+
+     ![image-20230508060953399](../../../ubuntu_share/Markdowm/Pic/image-20230508060953399.png)
+
+   * 生成前十车流量路段的图表
+
+     ![image-20230508060922700](../../../ubuntu_share/Markdowm/Pic/image-20230508060922700.png)
+
+     整体效果如下：
+
+     ![image-20230508055951671](../../../ubuntu_share/Markdowm/Pic/image-20230508055951671.png)
+
+     
+
+7. 可输入任意道路ID，得到指定日期的当天24小时出、入车流量对比图
+
+   ![image-20230508061052943](../../../ubuntu_share/Markdowm/Pic/image-20230508061052943.png)
+
+   效果如下：
+
+   ![image-20230508060410537](../../../ubuntu_share/Markdowm/Pic/image-20230508060410537.png)
+

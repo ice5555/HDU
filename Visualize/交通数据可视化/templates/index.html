@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>交通数据可视化</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+        }
+        #form-container {
+            position: fixed;
+            top: 0;
+            left: 75px;
+            z-index: 9999;
+            padding: 20px;
+        }
+        
+        #form-container label {
+            font-size: 18px;
+            margin-right: 10px;
+        }
+        #form-container input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        #form-container input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+          
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        #map {
+
+            width: 100%;
+        }
+        #carflow-comparison {
+            position: fixed;
+            bottom: -80px;
+            width: 0;
+            transform: scale(0.7);
+            padding: 20px;
+            z-index: 9999;
+}       #carflow-chart {
+            position: fixed;
+            top:100px;
+            width: 0;
+            transform: scale(0.7);
+            padding: 20px;
+            z-index: 9999;
+}       
+
+    </style>
+</head>
+<body>
+    <div id="form-container">
+        <form method="POST" action="/">
+            <label for="datepicker">选择日期：</label>
+            <input type="text" id="datepicker" name="datepicker" >
+            <input type="submit" value="查询">
+            <label for="road_id">道路ID：</label>
+   
+            <input type="text" id="road_id" name="road_id">
+            <input type="submit" value="查询">
+        </form>
+    </div>
+    
+
+    
+    <div id="map-container">
+        <div id="map">{{ map_html|safe }}</div>
+    </div>
+
+    <div id="carflow-comparison">
+        {% if carflow_comparison %}
+        <img src="{{ url_for('static', filename=date+'/carflow_comparison.png') }}" alt="Car Flow Comparison">
+
+        {% endif %}
+    </div>
+
+    <div id="carflow-chart">
+        {% if carflow_comparison %}
+        <!-- <label for="road_id">{{ url_for('static', filename=date+'/'+road_id+'.png') }}</label> -->
+        <img src="{{ url_for('static', filename=date+'/'+road_id+'.png') }}" alt="Car Flow ">
+        {% endif %}
+    </div>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        $(function() {
+            $( "#datepicker" ).datepicker({
+                dateFormat: "yymmdd",
+                minDate: new Date(2014, 0, 1),
+                maxDate: new Date(2014, 0, 15),
+                showAnim: "fadeIn",
+                showButtonPanel: true
+            });
+        });
+    </script>
+
+</body>
+</html>
